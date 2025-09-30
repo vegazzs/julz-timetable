@@ -130,6 +130,12 @@
 
   <div id="output"></div>
 
+  <hr>
+<h2>Admin Controls</h2>
+<p>Only you (with MetaMask & owner wallet) can use this</p>
+<button onclick="markCompleted(1)">Mark Day 1 Completed</button>
+
+
   <script>
     // ✅ Infura RPC
     const rpcUrl = "https://sepolia.infura.io/v3/42b75fb9db97417ca4914eaa577d8252";
@@ -155,6 +161,14 @@
         "stateMutability":"view",
         "type":"function"
       }
+
+      {
+    "inputs":[{"internalType":"uint8","name":"day","type":"uint8"}],
+    "name":"markSubjectCompleted",
+    "outputs":[],
+    "stateMutability":"nonpayable",
+    "type":"function"
+  }
     ];
 
     const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
@@ -191,7 +205,31 @@
         document.getElementById("output").innerHTML = `<p style="color:red;">⚠️ Error fetching data. Check console.</p>`;
       }
     }
+async function markCompleted(day) {
+  if (!window.ethereum) {
+    alert("Please install MetaMask!");
+    return;
+  }
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  await provider.send("eth_requestAccounts", []); 
+  const signer = provider.getSigner();
+  const contractWithSigner = new ethers.Contract(contractAddress, abi, signer);
+
+  try {
+    const tx = await contractWithSigner.markSubjectCompleted(day);
+    alert("⏳ Transaction sent: " + tx.hash);
+    await tx.wait();
+    alert("✅ Day " + day + " marked as completed!");
+  } catch (err) {
+    console.error(err);
+    alert("❌ Error: " + err.message);
+  }
+}
+
+               
   </script>
 </body>
 </html>
+
 
