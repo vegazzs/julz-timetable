@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -393,7 +392,7 @@
           padding: 15px;
         }
 
-        /* Force controls to stack full-width */
+        /* Layout: Force controls to stack the two selects, and then stack the two buttons below them */
         .controls {
           flex-direction: column;
           gap: 10px; /* Reduced gap */
@@ -403,11 +402,24 @@
           min-width: 100%;
         }
 
-        /* Adjusting buttons to be less visually heavy */
-        .controls button {
+        /* New container for buttons only */
+        .button-group-mobile {
+          display: flex;
           width: 100%;
-          padding: 10px; /* Slightly less padding */
-          height: 40px; /* Slightly shorter height */
+          gap: 10px;
+          /* Added to ensure buttons wrap nicely below selects */
+          flex-wrap: wrap;
+        }
+
+        .controls button {
+          /* NEW: Set button width to 50% minus half the gap, allowing them to sit side-by-side */
+          flex: 1 1 calc(50% - 5px);
+          padding: 8px; /* Further reduced padding */
+          height: 38px; /* Smaller height */
+          font-size: 0.9em; /* Slightly smaller font */
+          margin-top: 0; /* Remove top margin if it existed */
+          /* Ensure buttons don't grow too wide if only one is present */
+          max-width: 100%;
         }
 
         /* Adjust font sizes to be less "bold" */
@@ -429,14 +441,10 @@
           font-size: 1.4em; /* Smaller timer text */
         }
 
-        .card-exam-active .close-button {
-          padding: 15px 25px; /* Smaller close button */
-          font-size: 1.1em;
-        }
-
+        .card-exam-active .close-button,
         .card-exam-start-pending button {
-          padding: 15px 25px;
-          font-size: 1.1em;
+          padding: 12px 20px; /* Smaller padding */
+          font-size: 1em; /* Smaller font */
         }
       }
     </style>
@@ -459,12 +467,14 @@
           <label for="dayNumber">Select Day (1-7):</label>
           <select id="dayNumber"></select>
         </div>
-        <button id="fetchButton" onclick="fetchTimetable()">
-          VIEW SCHEDULE
-        </button>
-        <button id="progressButton" onclick="fetchProgress()">
-          GET PROGRESS
-        </button>
+        <div class="button-group-mobile">
+          <button id="fetchButton" onclick="fetchTimetable()">
+            VIEW SCHEDULE
+          </button>
+          <button id="progressButton" onclick="fetchProgress()">
+            GET PROGRESS
+          </button>
+        </div>
       </div>
 
       <div id="progressContainer" style="display: none; margin-top: 20px">
