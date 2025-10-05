@@ -18,7 +18,7 @@
         --error-red: #ef4444;
         --submit-red: #cc0000;
         --close-red: #d90000;
-        /* NEW Professional Colors for Grade Display */
+        /* Professional Colors for Grade Display */
         --result-border: #f5b041; /* Gold/Amber */
         --grade-box-bg: #0d47a1; /* Darker, Formal Blue */
       }
@@ -29,6 +29,7 @@
         padding: 0;
         background-color: var(--secondary-gray);
         color: var(--text-dark);
+        font-size: 16px; /* Base font size for desktop */
       }
 
       .header {
@@ -73,6 +74,7 @@
 
       .control-group {
         flex: 1;
+        min-width: 150px; /* Ensure controls stack better on small screens */
       }
 
       label {
@@ -243,7 +245,7 @@
         font-weight: 700;
       }
 
-      /* 💡 UPDATED STYLES FOR PROFESSIONAL GRADE PAGE */
+      /* UPDATED STYLES FOR PROFESSIONAL GRADE PAGE */
       .card-exam-complete {
         border-top: 5px solid var(--result-border); /* Gold/Amber Border */
         background-color: #fffaf0; /* Very light yellow/cream background */
@@ -366,6 +368,71 @@
       .card-exam-active .question-content {
         background-color: #fff;
         border: 1px solid var(--error-red);
+      }
+
+      /* ======================================= */
+      /* 💡 MOBILE STYLES (Screen size up to 600px) */
+      /* ======================================= */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px; /* Add some overall body padding to prevent content hugging edges */
+          font-size: 18px; /* Slightly larger base font for better readability */
+        }
+
+        .header {
+          padding: 15px 15px; /* Reduce horizontal padding in header */
+        }
+
+        .header h1 {
+          font-size: 1.6em; /* Slightly smaller header on small screens */
+        }
+
+        .container {
+          margin: 15px auto; /* Reduce margin to use space efficiently */
+          padding: 15px; /* Increase inner padding for "bold" look */
+        }
+
+        /* Force controls to stack full-width */
+        .controls {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .control-group {
+          min-width: 100%; /* Take full width */
+        }
+
+        .controls button {
+          flex: 0 0 auto;
+          width: 100%;
+        }
+
+        /* Adjust font sizes for "bold" impact on mobile */
+        .result-card h3 {
+          font-size: 1.5em;
+        }
+
+        .result-detail {
+          font-size: 1em; /* Normal body text is now larger */
+        }
+
+        .result-detail strong {
+          width: 80px; /* Adjust width of labels */
+        }
+
+        .card-exam-complete .grade-display {
+          font-size: 3.5em; /* Make the final grade much bigger and bolder */
+          padding: 20px 25px;
+        }
+
+        .card-exam-active .countdown-timer {
+          font-size: 1.8em; /* Bolder timer text */
+        }
+
+        .card-exam-active .close-button {
+          padding: 20px 30px; /* Make the button taller and bolder */
+          font-size: 1.3em;
+        }
       }
     </style>
   </head>
@@ -875,7 +942,7 @@
                       onclick="closeQuestionPage()" 
                       class="close-button"
                   >
-                    EXIT EXAM(GOODLUCK)
+                      EXIT EXAM(GOODLUCK)
                   </button>
               `;
               startCountdown(startTime, duration);
