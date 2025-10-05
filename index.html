@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -375,63 +376,67 @@
       /* ======================================= */
       @media (max-width: 600px) {
         body {
-          padding: 10px; /* Add some overall body padding to prevent content hugging edges */
-          font-size: 18px; /* Slightly larger base font for better readability */
+          padding: 5px; /* Minimal padding */
+          font-size: 16px; /* Standard font size */
         }
 
         .header {
-          padding: 15px 15px; /* Reduce horizontal padding in header */
+          padding: 10px 15px; /* Reduced header padding */
         }
 
         .header h1 {
-          font-size: 1.6em; /* Slightly smaller header on small screens */
+          font-size: 1.5em; /* Smaller header */
         }
 
         .container {
-          margin: 15px auto; /* Reduce margin to use space efficiently */
-          padding: 15px; /* Increase inner padding for "bold" look */
+          margin: 10px auto; /* Reduced margin */
+          padding: 15px;
         }
 
         /* Force controls to stack full-width */
         .controls {
           flex-direction: column;
-          gap: 15px;
+          gap: 10px; /* Reduced gap */
         }
 
         .control-group {
-          min-width: 100%; /* Take full width */
+          min-width: 100%;
         }
 
+        /* Adjusting buttons to be less visually heavy */
         .controls button {
-          flex: 0 0 auto;
           width: 100%;
+          padding: 10px; /* Slightly less padding */
+          height: 40px; /* Slightly shorter height */
         }
 
-        /* Adjust font sizes for "bold" impact on mobile */
+        /* Adjust font sizes to be less "bold" */
         .result-card h3 {
-          font-size: 1.5em;
+          font-size: 1.3em;
         }
 
-        .result-detail {
-          font-size: 1em; /* Normal body text is now larger */
-        }
-
+        /* Adjust width of labels to give more space to the value */
         .result-detail strong {
-          width: 80px; /* Adjust width of labels */
+          width: 80px;
         }
 
         .card-exam-complete .grade-display {
-          font-size: 3.5em; /* Make the final grade much bigger and bolder */
-          padding: 20px 25px;
+          font-size: 2.5em; /* Smaller final grade */
+          padding: 15px 30px;
         }
 
         .card-exam-active .countdown-timer {
-          font-size: 1.8em; /* Bolder timer text */
+          font-size: 1.4em; /* Smaller timer text */
         }
 
         .card-exam-active .close-button {
-          padding: 20px 30px; /* Make the button taller and bolder */
-          font-size: 1.3em;
+          padding: 15px 25px; /* Smaller close button */
+          font-size: 1.1em;
+        }
+
+        .card-exam-start-pending button {
+          padding: 15px 25px;
+          font-size: 1.1em;
         }
       }
     </style>
@@ -483,7 +488,7 @@
 
       <div id="output">
         <div class="result-card">
-          <h3>Welcome!</h3>
+          <h3>Welcome Onyinye!</h3>
           <p>
             Use the dropdowns and click 'View Schedule' to see the day's plan.
           </p>
